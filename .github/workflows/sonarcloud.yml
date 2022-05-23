@@ -39,7 +39,7 @@ jobs:
           curl -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip ${{ env.BUILD_WRAPPER_DOWNLOAD_URL }}
           unzip -o $HOME/.sonar/build-wrapper-linux-x86.zip -d $HOME/.sonar/
           echo "$HOME/.sonar/build-wrapper-linux-x86" >> $GITHUB_PATH
-          cp -r $HOME/work/zabbix-test/zabbix-test/* ${{ env.BUILD_WRAPPER_OUT_DIR }}
+          cp -r $HOME/work/zabbix-test/zabbix-test/* ${{ env.BUILD_WRAPPER_OUT_DIR }}/
           ${{ env.BUILD_WRAPPER_OUT_DIR }}/configure --enable-server --enable-agent --with-postgresql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2 --with-openipmi --enable-proxy --enable-agent2 --enable-java --prefix=$(pwd) --with-openssl
       - name: Run build-wrapper
         run: |
@@ -51,15 +51,15 @@ jobs:
         run: |
           sonar-scanner --define sonar.host.url="${{ env.SONAR_SERVER_URL }}" --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"
 
-  SonarCloud-other:
-    name: SonarCloud-other
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+ # SonarCloud-other:
+ #   name: SonarCloud-other
+ #   runs-on: ubuntu-latest
+ #   steps:
+ #     - uses: actions/checkout@v2
+ #       with:
+ #         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+ #     - name: SonarCloud Scan
+ #       uses: SonarSource/sonarcloud-github-action@master
+ #       env:
+ #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+ #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
