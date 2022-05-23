@@ -42,6 +42,7 @@ jobs:
           mkdir -p ${{ env.BUILD_WRAPPER_OUT_DIR }}
           cd ${{ env.BUILD_WRAPPER_OUT_DIR }}
           cp -r $HOME/work/zabbix-test/zabbix-test/* ./
+          ls -la
           ./configure --enable-server --enable-agent --with-postgresql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2 --with-openipmi --enable-proxy --enable-agent2 --enable-java --prefix=$(pwd) --with-openssl
           make
       - name: Run build-wrapper
