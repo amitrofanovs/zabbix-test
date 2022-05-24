@@ -35,7 +35,6 @@ jobs:
       #  with:
       #    java-version: 11
       
-     
       - name: Download and set up sonar-scanner
         env:
           SONAR_SCANNER_DOWNLOAD_URL: https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${{ env.SONAR_SCANNER_VERSION }}-linux.zip
@@ -51,13 +50,11 @@ jobs:
         run: |
           curl -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip ${{ env.BUILD_WRAPPER_DOWNLOAD_URL }}
           unzip -o $HOME/.sonar/build-wrapper-linux-x86.zip -d $HOME/.sonar/
-          sudo apt-get install libsnmp-dev snmp
           echo "$HOME/.sonar/build-wrapper-linux-x86" >> $GITHUB_PATH
+          sudo apt-get install libsnmp-dev snmp
           mkdir -p ${{ env.BUILD_WRAPPER_OUT_DIR }}
           cd ${{ env.BUILD_WRAPPER_OUT_DIR }}
-          ls -la $HOME
-          ls -la $HOME/work/
-          ls -la $HOME/work/zabbix-test/
+          ls -la $HOME/work/zabbix-test/zabbix-test/
           cp -r $HOME/work/zabbix-test/zabbix-test/* ./
           sh bootstrap.sh
           ./configure --enable-server --enable-agent --with-postgresql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2 --with-openipmi --enable-proxy --enable-agent2 --enable-java --prefix=$(pwd) --with-openssl
