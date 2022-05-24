@@ -29,9 +29,9 @@ jobs:
         env:
           BUILD_WRAPPER_DOWNLOAD_URL: ${{ env.SONAR_SERVER_URL }}/static/cpp/build-wrapper-linux-x86.zip
         run: |
-          curl -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip ${{ env.BUILD_WRAPPER_DOWNLOAD_URL }}
-          unzip -o $HOME/.sonar/build-wrapper-linux-x86.zip -d $HOME/.sonar/
-          echo "$HOME/.sonar/build-wrapper-linux-x86" >> $GITHUB_PATH
+          #curl -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip ${{ env.BUILD_WRAPPER_DOWNLOAD_URL }}
+          #unzip -o $HOME/.sonar/build-wrapper-linux-x86.zip -d $HOME/.sonar/
+          #echo "$HOME/.sonar/build-wrapper-linux-x86" >> $GITHUB_PATH
           mkdir -p ${{ env.BUILD_WRAPPER_OUT_DIR }}
           cd ${{ env.BUILD_WRAPPER_OUT_DIR }}
           cp -r $HOME/work/zabbix-test/zabbix-test/* ./
