@@ -21,7 +21,7 @@ jobs:
       SONAR_SERVER_URL: "https://sonarcloud.io"
       BUILD_WRAPPER_OUT_DIR: $HOME/.sonar/build_wrapper_output_directory # Directory where build-wrapper output will be placed
     steps:
-      - name: Extract branch name
+      - name: Extract Zabbix branch name
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
