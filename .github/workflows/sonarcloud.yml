@@ -25,3 +25,17 @@ jobs:
         shell: bash
         run: echo ${GITHUB_REF##*/}
         id: extract_branch
+      - name: Download and set up build-wrapper
+        env:
+          BUILD_WRAPPER_DOWNLOAD_URL: ${{ env.SONAR_SERVER_URL }}/static/cpp/build-wrapper-linux-x86.zip
+        run: |
+          curl -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip ${{ env.BUILD_WRAPPER_DOWNLOAD_URL }}
+          unzip -o $HOME/.sonar/build-wrapper-linux-x86.zip -d $HOME/.sonar/
+          echo "$HOME/.sonar/build-wrapper-linux-x86" >> $GITHUB_PATH
+          mkdir -p ${{ env.BUILD_WRAPPER_OUT_DIR }}
+          cd ${{ env.BUILD_WRAPPER_OUT_DIR }}
+          cp -r $HOME/work/zabbix-test/zabbix-test/* ./
+          sh bootstrap.sh
+          ls -la
+          ./configure --enable-server --enable-agent --with-postgresql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2 --with-openipmi --enable-proxy --enable-agent2 --enable-java --prefix=$(pwd) --with-openssl
+          make
