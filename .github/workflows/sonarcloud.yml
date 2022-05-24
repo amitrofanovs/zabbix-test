@@ -45,7 +45,7 @@ jobs:
         env:
           BUILD_WRAPPER_DOWNLOAD_URL: ${{ env.SONAR_SERVER_URL }}/static/cpp/build-wrapper-linux-x86.zip
         run: |
-          sudo apt-get install libsnmp-dev snmp libopenipmi-dev
+          sudo apt-get install libsnmp-dev snmp libopenipmi-dev libevent
           mkdir -p ${{ env.BUILD_WRAPPER_OUT_DIR }}
           cd ${{ env.BUILD_WRAPPER_OUT_DIR }}
           ls -la $HOME/work/zabbix-test/zabbix-test/
