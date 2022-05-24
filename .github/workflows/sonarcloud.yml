@@ -55,6 +55,9 @@ jobs:
           echo "$HOME/.sonar/build-wrapper-linux-x86" >> $GITHUB_PATH
           mkdir -p ${{ env.BUILD_WRAPPER_OUT_DIR }}
           cd ${{ env.BUILD_WRAPPER_OUT_DIR }}
+          ls -la $HOME
+          ls -la $HOME/work/
+          ls -la $HOME/work/zabbix-test/
           cp -r $HOME/work/zabbix-test/zabbix-test/* ./
           sh bootstrap.sh
           ./configure --enable-server --enable-agent --with-postgresql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2 --with-openipmi --enable-proxy --enable-agent2 --enable-java --prefix=$(pwd) --with-openssl
