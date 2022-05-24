@@ -1,4 +1,4 @@
-name: SonarCloud Build
+name: SonarCloud C Build
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
      #- '4.0'
      #- '5.0'
      #- '5.4'
-     #- '6.0'
+     - '6.0'
      
   pull_request:
     types: [opened, synchronize, reopened]
