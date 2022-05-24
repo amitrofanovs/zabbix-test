@@ -23,5 +23,5 @@ jobs:
     steps:
       - name: Extract Zabbix branch name
         shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        run: echo ${GITHUB_REF##*/}
         id: extract_branch
