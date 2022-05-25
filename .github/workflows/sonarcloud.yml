@@ -6,9 +6,6 @@ on:
      - 'master'
      - 'release/*'
      
-  pull_request:
-    types: [opened, synchronize, reopened]
-
 jobs:
 
   SonarCloud-C:
