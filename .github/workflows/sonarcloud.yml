@@ -4,13 +4,11 @@ on:
   push:
     branches:
      - 'master'
-     - '4.0'
-     - '5.0'
-     - '5.4'
-     - '6.0'
+     - 'release/*'
      
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
 
   SonarCloud-C:
