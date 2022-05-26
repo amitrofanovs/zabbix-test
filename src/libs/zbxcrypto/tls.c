@@ -3549,7 +3549,6 @@ int	zbx_tls_connect(zbx_socket_t *s, unsigned int tls_connect, const char *tls_a
 		}
 
 		if (NULL == (s->tls_ctx->ctx = SSL_new(ctx_cert)))
-		if (NULL == (s->tls_ctx->ctx = SSL_new(ctx_cert)))
 		{
 			zbx_snprintf_alloc(error, &error_alloc, &error_offset, "cannot create connection context:");
 			zbx_tls_error_msg(error, &error_alloc, &error_offset);
