@@ -8,7 +8,7 @@ on:
      
 jobs:
 
-  SonarCloud-C:
+  SonarCloud:
     name: SonarCloud-C
     runs-on: ubuntu-latest
     env:
