@@ -7,7 +7,6 @@ on:
      - 'release/*'
      
 jobs:
-
   SonarCloud:
     name: SonarCloud-C
     runs-on: ubuntu-latest
