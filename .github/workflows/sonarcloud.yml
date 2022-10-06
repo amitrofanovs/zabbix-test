@@ -40,6 +40,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install libsnmp-dev snmp libopenipmi-dev libevent-dev libcurl4-openssl-dev
           cd $GITHUB_WORKSPACE
+          cat bootstrap.sh
           sh bootstrap.sh
           ./configure --enable-server --enable-agent --with-postgresql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2 --with-openipmi --enable-proxy --enable-agent2 --enable-java --prefix=$(pwd) --with-openssl
           make
