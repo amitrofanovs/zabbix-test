@@ -6,7 +6,7 @@ on:
      
 jobs:
   SonarCloud:
-    name: SonarCloud-C
+    name: SonarCloud
     runs-on: ubuntu-latest
     env:
       SONAR_SCANNER_VERSION: 4.7.0.2747
