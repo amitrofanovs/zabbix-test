@@ -1,8 +1,12 @@
 name: SonarCloud Build
 
 on:
+  push:
+    branches:
+     - 'master'
+     - 'release/*'
   schedule:
-    - cron: "35 * * * *"
+    - cron: '0 0 * * *'
      
 jobs:
   SonarCloud:
